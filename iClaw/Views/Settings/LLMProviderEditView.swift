@@ -771,10 +771,19 @@ struct LLMProviderEditView: View {
             enableModel("freecombo3")
             enableModel("gemini/gemini-3.1-pro-preview")
             enableModel("gemini/gemini-3.1-flash-lite-preview")
+            enableModel("gemini/gemma-4-31b-it")
             for model in ["freecombo3", "gemini/gemini-3.1-pro-preview", "gemini/gemini-3.1-flash-lite-preview"] {
                 modelCapabilities[model]?.thinkingLevel = .medium
                 modelCapabilities[model]?.supportsReasoning = true
             }
+        }
+        presetChip("9router Gemma", icon: "cloud") {
+            name = name.isEmpty ? "9router Gemma" : name
+            endpoint = "http://192.168.1.8:20128/v1"
+            apiKey = apiKey.isEmpty ? "9router" : apiKey
+            modelName = "gemini/gemma-4-31b-it"
+            apiStyle = .openAI
+            enableModel("gemini/gemma-4-31b-it")
         }
         presetChip("Ollama", icon: "desktopcomputer") {
             name = name.isEmpty ? "Ollama" : name
