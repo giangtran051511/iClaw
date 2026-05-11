@@ -762,6 +762,20 @@ struct LLMProviderEditView: View {
             enableModel("anthropic/claude-sonnet-4.6")
             enableModel("openai/gpt-5.4")
         }
+        presetChip("9router", icon: "point.3.connected.trianglepath.dotted") {
+            name = name.isEmpty ? "9router" : name
+            endpoint = "http://192.168.1.8:20128/v1"
+            apiKey = apiKey.isEmpty ? "9router" : apiKey
+            modelName = "freecombo3"
+            apiStyle = .openAI
+            enableModel("freecombo3")
+            enableModel("gemini/gemini-3.1-pro-preview")
+            enableModel("gemini/gemini-3.1-flash-lite-preview")
+            for model in ["freecombo3", "gemini/gemini-3.1-pro-preview", "gemini/gemini-3.1-flash-lite-preview"] {
+                modelCapabilities[model]?.thinkingLevel = .medium
+                modelCapabilities[model]?.supportsReasoning = true
+            }
+        }
         presetChip("Ollama", icon: "desktopcomputer") {
             name = name.isEmpty ? "Ollama" : name
             endpoint = "http://localhost:11434/v1"
